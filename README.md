@@ -6,7 +6,7 @@ Project context: the Notion pages "Short project description" (technical brief) 
 
 ## How to open
 
-Double-click `entrack-konfigurator.html`. It runs in any modern browser, with no install or server. Everything it needs is inside the file (three.js and product photos are embedded, so the file is about 1.2 MB).
+Double-click `index.html`. It runs in any modern browser, with no install or server. Everything it needs is inside the file (three.js and product photos are embedded, so the file is about 1.2 MB).
 
 If you serve it through a local web server and don't see recent changes, force-reload the page (Ctrl+F5).
 
@@ -42,6 +42,18 @@ Four steps: **1 Machine → 2 Equipment → 3 Customer → 4 Quote**, with a liv
 **Quote numbering**
 - Sequential per year: `T-2026-1001`, `T-2026-1002`, and so on. The final number is assigned at first save, and new versions keep it.
 
+## Design
+
+The look follows the Entrack demo site (entrack-demo-alpha.vercel.app), so the configurator feels like part of the same product family.
+
+- **Palette:** near-black `#101007`, Entrack yellow `#f6e805` (deeper `#ded104`, soft `#fdf9b8`), warm paper `#fbfaf3`, white cards, and thin warm-grey lines.
+- **Type:** Libre Baskerville (classic serif) for headlines, Archivo for UI text and for the small uppercase labels and codes. Fonts load from Google Fonts, so they need an internet connection. Offline, the browser falls back to system fonts.
+- **Layout:** black header with the round Entrack logo, a yellow context strip (signed-in seller, role), and a dark step navigation where the active step is yellow. The price summary has a dark "receipt" header.
+- **Shapes:** sharp 2 px corners, black borders and yellow tints for selected states, yellow buttons for primary actions only.
+- **Quote document:** black header band with the logo, serif title, small uppercase section labels with a yellow marker. The PDF keeps the colours.
+- The logo is the round Entrack badge copied from the demo site and embedded once in the HTML (as a CSS variable). The favicon is copied from entrack.no.
+- Colours and fonts are CSS variables at the top of the `<style>` block, and the overrides sit in one block marked `Entrack theme v2`.
+
 ## Where the data is stored
 
 Only in the browser's `localStorage`. Quotes, templates, saved product links, price parameters, and the chosen role exist only on that device and browser. Clearing site data removes them, and a different browser or iPad starts empty. Unsaved work is not restored after a page refresh (it returns to step 1).
@@ -65,7 +77,3 @@ The keys are `entrack-konfig-tilbud-v1`, `entrack-konfig-params-v1`, `entrack-ma
 - Who may create product links between machines and products?
 - Is the customer accept/decline in phase 1 or phase 2?
 - Does Entrack have its own quote numbering scheme?
-
-## Other files in this folder
-
-`patch1.py` to `patch8.py` are one-time scripts used to apply the changes above to the original prototype. They are not needed to run the prototype and can be deleted. The original, unmodified prototype is in the Downloads folder.
